@@ -13,7 +13,7 @@ import { UserController, PostController } from './controllers/index.js';
 
 mongoose
   .set('strictQuery', false)
-  .connect('mongodb+srv://admin:ww74@cluster0.7rj37pj.mongodb.net/blog?retryWrites=true&w=majority')
+  .connect(process.env.MONGODB_URL)
   .then(() => console.log('DB ok'))
   .catch((err) => console.log('DB error', err));
 
