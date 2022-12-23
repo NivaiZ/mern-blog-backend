@@ -34,7 +34,7 @@
 ## Тестовые учетные записи
 
 — `test123@mail.ru
-qwerty123`;
+qwerty123`;<br>
 — `vasya@test.ru
 qwerty1234`.
 
