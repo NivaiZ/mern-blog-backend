@@ -33,7 +33,7 @@
 
 ## Тестовые учетные записи
 
-— test123@mail.ru
+— test123@mail.ru<br>
 qwerty123;<br>
 — `vasya@test.ru
 qwerty1234`.<br>
