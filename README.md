@@ -33,6 +33,6 @@
 
 ## Тестовые учетные записи
 
-— `test123@mail.ru
+— `testy123@mail.ru`
 qwerty__123`;<br>
 
