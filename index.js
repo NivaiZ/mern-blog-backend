@@ -34,7 +34,25 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 app.use(express.json());
-app.use(cors());
+
+// Динамически определите origin
+const corsOptions = {
+  origin: (origin, callback) => {
+    // Укажите разрешенные домены в этом массиве
+    const allowedDomains = ['https://mern-blog-frontend-woad.vercel.app', 'https://другой-домен.com'];
+
+    // Проверяем, если origin не задан или если он совпадает с разрешенными доменами
+    if (!origin || allowedDomains.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  optionsSuccessStatus: 200,
+};
+
+app.use(cors(corsOptions));
+
 app.use('/uploads', express.static('uploads'));
 
 app.post('/auth/login', loginValidation, handleValidationErrors, UserController.login);
