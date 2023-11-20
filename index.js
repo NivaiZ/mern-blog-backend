@@ -13,7 +13,7 @@ import { UserController, PostController } from './controllers/index.js';
 
 mongoose
   .set('strictQuery', false)
-  .connect(process.env.MONGODB_URL)
+  .connect(process.env.MONGODB_UR)
   .then(() => console.log('DB ok'))
   .catch((err) => console.log('DB error', err));
 
@@ -34,22 +34,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 app.use(express.json());
-
-const corsOptions = {
-  origin: (origin, callback) => {
-    const allowedDomains = ['https://mern-blog-frontend-nu.vercel.app/', 'https://другой-домен.com'];
-
-    if (!origin || allowedDomains.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-  optionsSuccessStatus: 200,
-};
-
-app.use(cors(corsOptions));
-
+app.use(cors());
 app.use('/uploads', express.static('uploads'));
 
 app.post('/auth/login', loginValidation, handleValidationErrors, UserController.login);
