@@ -35,13 +35,10 @@ const upload = multer({ storage });
 
 app.use(express.json());
 
-// Динамически определите origin
 const corsOptions = {
   origin: (origin, callback) => {
-    // Укажите разрешенные домены в этом массиве
-    const allowedDomains = ['https://mern-blog-frontend-woad.vercel.app', 'https://другой-домен.com'];
+    const allowedDomains = ['https://mern-blog-frontend-nu.vercel.app/', 'https://другой-домен.com'];
 
-    // Проверяем, если origin не задан или если он совпадает с разрешенными доменами
     if (!origin || allowedDomains.includes(origin)) {
       callback(null, true);
     } else {
